@@ -1,8 +1,8 @@
 # Azure ProjectOS
 
-**An AI-powered project hub for Microsoft 365** — bringing work from Microsoft Planner, Microsoft Project, and Excel into one place to explore deadlines, ownership, and progress using a unified dashboard and natural-language questions.
+**An AI-powered project hub for Microsoft 365** — unifying Microsoft Planner, Microsoft Project, and Excel into a centralized workspace for tracking tasks, deadlines, and team progress. Built with Azure OpenAI and Microsoft Graph APIs, ProjectOS provides interactive Gantt charts, calendars, deliverable views, and resource filters to visualize project timelines and workloads. A natural-language assistant enables teams to query project data, identify bottlenecks, and generate actionable status summaries without switching between tools.
 
-## The problem
+## The Problem
 
 Project plans and action items often live in separate tools. Team members must move between Planner boards, Project schedules, and Excel trackers just to answer simple questions:
 
@@ -33,13 +33,13 @@ Project plans and action items often live in separate tools. Team members must m
 
 ## Architecture
 
-ProjectOS uses a React frontend, a FastAPI backend, source-specific Microsoft connectors, a PostgreSQL-backed normalized task store, and Azure OpenAI with Semantic Kernel for read-only task queries.
+ProjectOS uses a React frontend, a FastAPI backend, source-specific Microsoft connectors, a PostgreSQL-backed normalized task store, and Azure OpenAI with PydanticAI for typed, read-only task queries.
 
 ```mermaid
 flowchart TD
     UI[React + TypeScript<br/>Dashboard and AI chat] --> API[Python / FastAPI]
     API --> TASKS[Unified task service]
-    API --> AI[Semantic Kernel]
+    API --> AI[PydanticAI agent<br/>Typed tool calling]
     AI --> AOAI[Azure OpenAI]
     AI --> TASKS
     TASKS <--> DB[(Azure Database for PostgreSQL<br/>Flexible Server)]
@@ -57,10 +57,10 @@ For component responsibilities, data schema, synchronization flows, and API endp
 
 | Layer | Technologies |
 | --- | --- |
-| **Frontend** | React, TypeScript, Tailwind CSS |
+| **Frontend** | React, TypeScri |
 | **Backend** | Python, FastAPI |
 | **Microsoft integrations** | Microsoft Graph API, Dataverse API, Excel / CSV imports |
-| **AI orchestration** | Semantic Kernel |
+| **AI orchestration** | PydanticAI (typed tools and structured outputs) |
 | **Language model** | Azure OpenAI |
 | **Data storage** | Azure Database for PostgreSQL (Flexible Server) |
 | **ORM / migrations** | SQLAlchemy, Alembic |
