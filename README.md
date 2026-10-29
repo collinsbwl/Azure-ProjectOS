@@ -2,6 +2,10 @@
 
 **An AI-powered project hub for Microsoft 365** — unifying Microsoft Planner, Microsoft Project, and Excel into a centralized workspace for tracking tasks, deadlines, and team progress. Built with Azure OpenAI and Microsoft Graph APIs, ProjectOS provides interactive Gantt charts, calendars, deliverable views, and resource filters to visualize project timelines and workloads. A natural-language assistant enables teams to query project data, identify bottlenecks, and generate actionable status summaries without switching between tools.
 
+## Disclosure
+
+ProjectOS originated as an internal Microsoft × Bond hackathon project. The original source code and company data are proprietary and are not included in this repository. Architecture and implementation details presented here describe a public-facing reference design and may differ from the internal implementation; any public demo uses independently written code and sample data. No confidential company assets are shared.
+
 ## The Problem
 
 Project plans and action items often live in separate tools. Team members must move between Planner boards, Project schedules, and Excel trackers just to answer simple questions:
@@ -57,14 +61,10 @@ For component responsibilities, data schema, synchronization flows, and API endp
 
 | Layer | Technologies |
 | --- | --- |
-| **Frontend** | React, TypeScri |
+| **Frontend** | React, TypeScript |
 | **Backend** | Python, FastAPI |
 | **Microsoft integrations** | Microsoft Graph API, Dataverse API, Excel / CSV imports |
 | **AI orchestration** | PydanticAI (typed tools and structured outputs) |
 | **Language model** | Azure OpenAI |
 | **Data storage** | Azure Database for PostgreSQL (Flexible Server) |
 | **ORM / migrations** | SQLAlchemy, Alembic |
-
-## Disclosure
-
-ProjectOS originated as an internal Microsoft × Bond hackathon project. The original source code and company data are proprietary and are not included in this repository. Architecture and implementation details presented here describe a public-facing reference design and may differ from the internal implementation; any public demo uses independently written code and sample data. No confidential company assets are shared.
